@@ -2,7 +2,9 @@
 
 CLI tool to patch Hasura metadata file with needed objects or with another Hasura metadata file. You can use it to deploy complex CI/CD flows for applications, which are using Hasura on a backend.
 
-Your pull requests and issues are welcomed!
+## Why does it useful?
+
+If you use different environments, you likely have different webhooks in each environment. With this tool you can describe needed metadata for each webhook separately and finally merge them all when you need to deploy your release. Such approach gives an ability to several people to develop different webhooks independently.
 
 ## Requirements
 
