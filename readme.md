@@ -22,8 +22,8 @@ Find all the syntax by `python main.py --help`
 
 ### Supported operations
 
-#### Merge `-m`
-Use it to merge needed Hasura objects from a mixin file to a source metadata file.
+#### Merge
+Default mode. Use it to merge needed Hasura objects from a mixin file to a source metadata file.
 
 #### Replace `-r`
 
