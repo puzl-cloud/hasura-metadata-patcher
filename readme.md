@@ -1,6 +1,6 @@
 ## What is it
 
-CLI tool to patch Hasura metadata file with needed event triggers and remote schemas. You can use it to deploy complex CI/CD flows for applications, which are using Hasura on a backend.
+CLI tool to patch Hasura metadata file with needed objects or with another Hasura metadata file. You can use it to deploy complex CI/CD flows for applications, which are using Hasura on a backend.
 
 Your pull requests and issues are welcomed!
 
@@ -11,12 +11,29 @@ Your pull requests and issues are welcomed!
 
 ## How does it work
 
-### Syntax
+### Syntax 
 
 ```shell
-python main.py -r remote_schemas -r actions -r custom_types -r event_triggers -s demo/stage_metadata.json -m demo/prod_metadata.json -o demo/out.json
+python main.py -r remote_schemas -r actions -r custom_types -r event_triggers -s dev_metadata.json -m prod_metadata.json -o out.json
 ```
-Find syntax by `python main.py --help`
+Find all the syntax by `python main.py --help`
+
+### Supported operations
+
+#### Merge `-m`
+Use it to merge needed Hasura objects from a mixin file to a source metadata file.
+
+#### Replace `-r`
+
+Use it to define, which objects should be replaced in a source metadata file by objects from a mixin. 
+
+For example, if a mixin file is another Hasura metadata file and you call
+
+```shell
+python main.py -r event_triggers -s dev_metadata.json -m prod_metadata.json -o out.json
+```
+
+all the event triggers in all the tables in `dev_metadata.json` will be removed and new event triggers from `prod_metadata.json` will be inserted instead.
 
 ### Typical Hasura migration flow
 
