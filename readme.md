@@ -44,7 +44,7 @@ then:
 
 1. Export metadata in `json` format from Hasura in dev environment, which should be deployed to production.
 2. Export metadata in `json` format from Hasura in current production environment.
-3. Run patcher with source `json` file from staging and mixin file from production.
+3. Run patcher with source `json` file from dev and mixin file from production.
 4. Run patcher with output `json` file from previous step and mixin files with new Hasura objects to deploy.
 5. The last output file is your new Hasura metadata for production environment. 
 
