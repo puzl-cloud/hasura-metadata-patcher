@@ -1,6 +1,6 @@
 ## What is it
 
-CLI tool to patch Hasura metadata json file with needed objects or with another Hasura metadata file. You can use it to deploy complex CI/CD flows for applications, which are using Hasura on a backend.
+CLI tool to patch Hasura metadata `json` file with needed objects or with another Hasura metadata file. You can use it to deploy complex CI/CD flows for applications, which are using Hasura on a backend.
 
 ## Why is it useful
 
