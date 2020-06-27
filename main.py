@@ -106,5 +106,4 @@ def exec_command(source, mixin, replace, output):
 
 
 if __name__ == '__main__':
-    # patch_metadata_file("demo/stage_metadata.json", "demo/prod_metadata.json", replace_objects=("event_triggers"), output_file="demo/out.json")
     exec_command()
