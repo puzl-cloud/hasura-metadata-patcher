@@ -40,7 +40,7 @@ then:
 2. New event triggers from `prod_metadata.json` will be inserted instead.
 3. All the other metadata in `dev_metadata.json` remains untouched.
 
-### Typical Hasura migration flow
+### Typical Hasura metadata release flow
 
 1. Export metadata in `json` format from Hasura in dev environment, which should be deployed to production.
 2. Export metadata in `json` format from Hasura in current production environment.
