@@ -36,7 +36,7 @@ python main.py -r event_triggers -s dev_metadata.json -m prod_metadata.json -o o
 ```
 
 then:
-1. All the event triggers for all the tables in `dev_metadata.json` will be removed.
+1. All the event triggers for all the tables from `dev_metadata.json` will be removed.
 2. New event triggers from `prod_metadata.json` will be inserted instead.
 3. All the other metadata from `dev_metadata.json` remains untouched and the result metadata goes to `out.json`.
 
