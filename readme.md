@@ -162,12 +162,12 @@ Points 1-3 are needed to migrate new tables and permissions from dev environment
         "timeout_seconds": 60,
         "forward_client_headers": false,
         "headers": [
-        {
-          "name": "Authorization",
-          "value_from_env": "AUTHORIZATION_HEADER"
-        }
-      ]
-    },
+          {
+            "name": "Authorization",
+            "value_from_env": "AUTHORIZATION_HEADER"
+          }
+        ]
+      },
       "comment": "0.1.0"
     }
 }
