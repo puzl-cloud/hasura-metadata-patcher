@@ -37,7 +37,7 @@ python main.py -r event_triggers -s dev_metadata.json -m prod_metadata.json -o o
 
 then:
 1. All the metadata objects from `prod_metadata.json` will be mixed in to metadata from `dev_metadata.json`. This means that if object does not exist in `dev_metadata.json`, it will be created, but if exists it will be replaced with new object from a mixin file `prod_metadata.json`.
-2. All the event triggers for all the tables from `dev_metadata.json` will be removed.
+2. All the event triggers will be removed for all the tables in the resulted metadata from the previous step.
 3. New event triggers from `prod_metadata.json` will be inserted instead.
 4. The result metadata goes to `out.json`.
 
