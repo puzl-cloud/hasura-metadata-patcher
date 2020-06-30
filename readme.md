@@ -36,9 +36,10 @@ python main.py -r event_triggers -s dev_metadata.json -m prod_metadata.json -o o
 ```
 
 then:
-1. All the event triggers for all the tables from `dev_metadata.json` will be removed.
-2. New event triggers from `prod_metadata.json` will be inserted instead.
-3. All the other metadata from `dev_metadata.json` remains untouched and the result metadata goes to `out.json`.
+1. All the metadata objects from `prod_metadata.json` will be mixed in to metadata from `dev_metadata.json`. This means that if object is non-exists, it will be created, but if exists it will be replaced with new object from a mixin file.
+2. All the event triggers for all the tables from `dev_metadata.json` will be removed.
+3. New event triggers from `prod_metadata.json` will be inserted instead.
+4. The result metadata goes to `out.json`.
 
 ### Typical Hasura metadata release flow
 
