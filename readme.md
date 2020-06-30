@@ -27,7 +27,7 @@ Default mode. Use it to merge needed Hasura objects from a mixin file to a sourc
 
 #### Replace `-r`
 
-Use it to define, which objects should be replaced in a source metadata file by objects from a mixin. 
+Use it to define, which objects should be fully replaced in a source metadata file by objects from a mixin. 
 
 For example, if a mixin file is another Hasura metadata file and you call
 
