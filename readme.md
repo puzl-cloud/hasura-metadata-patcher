@@ -8,7 +8,7 @@ If you use different environments, you likely have different webhooks in each en
 
 ## Requirements
 
-- Python
+- Python 3
 - `requirements.txt`
 
 ## How does it work
