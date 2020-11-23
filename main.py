@@ -40,6 +40,9 @@ def convert_objects_to_hasura_metadata_schema(mixin):
         if obj["type"] == "custom_type":
             new_meta.merge_custom_type(meta_object)
 
+        if obj["type"] == "input_object":
+            new_meta.merge_custom_input_type(meta_object)
+
     return new_meta
 
 

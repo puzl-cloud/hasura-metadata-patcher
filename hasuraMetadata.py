@@ -7,6 +7,7 @@ class HasuraMetadata:
             self.actions = list()
             self.custom_types = dict()
             self.custom_types["objects"] = list()
+            self.custom_types["input_objects"] = list()
 
         else:
             if source["version"] != 2:
@@ -31,6 +32,7 @@ class HasuraMetadata:
             else:
                 self.custom_types = dict()
                 self.custom_types["objects"] = list()
+                self.custom_types["input_objects"] = list()
 
     def _apply_table(self, schema, name):
         table = self.__get_table(schema, name)
@@ -109,6 +111,18 @@ class HasuraMetadata:
         self.custom_types["objects"].append(custom_type)
         return self
 
+    def merge_custom_input_type(self, custom_input_type):
+        assert "name" in custom_input_type, "Custom input type object must have name"
+        assert type(custom_input_type) is dict, "Custom input type must be object"
+
+        for i_object in self.custom_types["input_objects"].copy():
+            if i_object["name"] == custom_input_type["name"]:
+                self.custom_types["input_objects"].remove(i_object)
+                break
+
+        self.custom_types["input_objects"].append(custom_input_type)
+        return self
+
     def replace_remote_schemas(self, new_remote_schemas):
         assert type(new_remote_schemas) is list, "New remote schemas must be list"
         self.remote_schemas = new_remote_schemas
@@ -119,9 +133,9 @@ class HasuraMetadata:
         self.actions = new_actions
         return self
 
-    def replace_custom_types(self, new_custom_type):
-        assert type(new_custom_type) is dict, "New custom types must be dict"
-        self.custom_types = new_custom_type
+    def replace_custom_types(self, new_custom_types):
+        assert type(new_custom_types) is dict, "New custom types must be dict"
+        self.custom_types = new_custom_types
         return self
 
     def replace_event_triggers(self, new_tables):
@@ -166,3 +180,6 @@ class HasuraMetadata:
 
         for custom_type in mixin_hasura_metadata.custom_types["objects"]:
             self.merge_custom_type(custom_type)
+
+        for input_object in mixin_hasura_metadata.custom_types["input_objects"]:
+            self.merge_custom_type(input_object)
