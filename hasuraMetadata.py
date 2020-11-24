@@ -31,7 +31,9 @@ class HasuraMetadata:
                 self.custom_types = source["custom_types"]
             else:
                 self.custom_types = dict()
+            if 'objects' not in self.custom_types:
                 self.custom_types["objects"] = list()
+            if 'input_objects' not in self.custom_types:
                 self.custom_types["input_objects"] = list()
 
     def _apply_table(self, schema, name):
