@@ -69,6 +69,11 @@ def patch_metadata_file(source_file, mixin_file, replace_objects=None, output_fi
     source_meta.mixin(mixin_meta)
 
     if replace_objects:
+        for obj in replace_objects:
+            assert obj in ["event_triggers", "remote_schemas", "actions", "custom_types"], \
+                'Invalid -r option. ' \
+                'Must be one of ["event_triggers", "remote_schemas", "actions", "custom_types"].'
+
         if "event_triggers" in replace_objects:
             print("Replacing event triggers")
             source_meta.replace_event_triggers(mixin_meta.tables)
