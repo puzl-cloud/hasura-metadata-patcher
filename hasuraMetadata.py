@@ -10,8 +10,9 @@ class HasuraMetadata:
             self.custom_types["input_objects"] = list()
 
         else:
-            if source["version"] != 2:
-                raise Exception(f"Unsupported Hasura metadata version: version 2 is supported, "
+            supported_versions = [2, 3]
+            if source["version"] not in supported_versions:
+                raise Exception(f"Unsupported Hasura metadata version: versions {supported_versions} are supported, "
                                 f"got {source['version']} instead")
 
             self.version = source["version"]
