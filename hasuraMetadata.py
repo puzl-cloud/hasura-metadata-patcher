@@ -1,7 +1,7 @@
 class HasuraMetadata:
     def __init__(self, source=None):
         if not source:
-            self.version = 2
+            self.version = 3
             self.tables = list()
             self.sources = list()
             self.remote_schemas = list()
@@ -20,8 +20,11 @@ class HasuraMetadata:
 
             #
             # ToDo: add many sources support
-            self.sources = source["sources"]
-            self.tables = source["sources"][0]["tables"]
+            if self.version == 3:
+                self.sources = source["sources"]
+                self.tables = source["sources"][0]["tables"]
+            else:
+                self.tables = source["tables"]
 
             if "remote_schemas" in source:
                 self.remote_schemas = source["remote_schemas"]

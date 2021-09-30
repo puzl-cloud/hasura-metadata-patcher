@@ -46,7 +46,7 @@ def convert_objects_to_hasura_metadata_schema(mixin):
     return new_meta
 
 
-def patch_metadata_file(source_file, mixin_file, replace_objects=None, output_file=None):
+def patch_metadata_file(source_file, mixin_file, replace_objects=None, output_file=None, meta_version=3):
     print("Loading source file")
     source = read_json_file(source_file)
     print("Loading mixin file")
@@ -88,6 +88,11 @@ def patch_metadata_file(source_file, mixin_file, replace_objects=None, output_fi
             source_meta.replace_custom_types(mixin_meta.custom_types)
 
     try:
+        if meta_version == 3:
+            del source_meta.tables
+        else:
+            del source_meta.sources
+
         if output_file:
             with open(output_file, "w") as out_file:
                 json.dump(source_meta.__dict__, out_file, indent=2)
@@ -109,8 +114,9 @@ def patch_metadata_file(source_file, mixin_file, replace_objects=None, output_fi
               multiple=True, default=[])
 @click.option('--output', '-o', help="Path to output json file with new metadata. "
                                      "If not set, source file will be overwritten.")
-def exec_command(source, mixin, replace, output):
-    return patch_metadata_file(source, mixin, replace, output)
+@click.option('--version', '-v', help="Version of metadata object. 2 and 3 are supported.", default=3)
+def exec_command(source, mixin, replace, output, version):
+    return patch_metadata_file(source, mixin, replace, output, version)
 
 
 if __name__ == '__main__':
