@@ -90,15 +90,20 @@ def patch_metadata_file(source_file, mixin_file, replace_objects=None, output_fi
     try:
         if meta_version == 3:
             del source_meta.tables
+            meta_object_for_api = {
+                "resource_version": 2,
+                "metadata": source_meta.__dict__
+            }
         else:
             del source_meta.sources
+            meta_object_for_api = source_meta.__dict__
 
         if output_file:
             with open(output_file, "w") as out_file:
-                json.dump(source_meta.__dict__, out_file, indent=2)
+                json.dump(meta_object_for_api, out_file, indent=2)
         else:
             with open(source_file, "w") as out_file:
-                json.dump(source_meta.__dict__, out_file, indent=2)
+                json.dump(meta_object_for_api, out_file, indent=2)
     except Exception as e:
         print("Unable to dump output")
         raise e
