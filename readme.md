@@ -57,6 +57,7 @@ Points 1-3 are needed to migrate new tables and permissions from dev environment
 * [x] Remote schemas
 * [x] Actions
 * [x] Custom types ([object types](https://hasura.io/docs/1.0/graphql/core/actions/types/index.html#object-types) and [input types](https://hasura.io/docs/1.0/graphql/core/actions/types/index.html#input-types))
+* [ ] Sources
 * [ ] Tables
 * [ ] Table permissions
 

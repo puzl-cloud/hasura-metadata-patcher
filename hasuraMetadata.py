@@ -3,6 +3,7 @@ class HasuraMetadata:
         if not source:
             self.version = 2
             self.tables = list()
+            self.sources = list()
             self.remote_schemas = list()
             self.actions = list()
             self.custom_types = dict()
@@ -16,7 +17,11 @@ class HasuraMetadata:
                                 f"got {source['version']} instead")
 
             self.version = source["version"]
-            self.tables = source["tables"]
+
+            #
+            # ToDo: add many sources support
+            self.sources = source["sources"]
+            self.tables = source["sources"][0]["tables"]
 
             if "remote_schemas" in source:
                 self.remote_schemas = source["remote_schemas"]
