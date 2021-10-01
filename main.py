@@ -90,13 +90,9 @@ def patch_metadata_file(source_file, mixin_file, replace_objects=None, output_fi
     try:
         if meta_version == 3:
             del source_meta.tables
-            meta_object_for_api = {
-                "resource_version": 2,
-                "metadata": source_meta.__dict__
-            }
         else:
             del source_meta.sources
-            meta_object_for_api = source_meta.__dict__
+        meta_object_for_api = source_meta.__dict__
 
         if output_file:
             with open(output_file, "w") as out_file:
