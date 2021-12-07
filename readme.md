@@ -11,7 +11,7 @@ If you use different environments, you likely have different webhooks in each en
 - Python 3.6 or higher
 - `requirements.txt`
 
-## How does it work
+## How it works
 
 ### Syntax 
 
