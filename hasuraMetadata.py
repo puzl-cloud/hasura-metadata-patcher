@@ -12,9 +12,9 @@ class HasuraMetadata:
 
         else:
             supported_versions = [2, 3]
-            if source["version"] not in supported_versions:
+            if source.get('version') not in supported_versions:
                 raise Exception(f"Unsupported Hasura metadata version: versions {supported_versions} are supported, "
-                                f"got {source['version']} instead")
+                                f"got {source.get('version')} instead")
 
             self.version = source["version"]
 
